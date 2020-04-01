@@ -29,7 +29,7 @@ A: *Shrugged*
 
 Q: Photo quality is bad!
 
-A: Try using Pilow instead of PIL
+A: Try using Pillow instead of PIL
 
 Example output:
 
