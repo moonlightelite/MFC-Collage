@@ -19,4 +19,4 @@ optional arguments:
 ```
 
 Example output:
-![Not mine](https://i.imgur.com/kV0ZkUc.jpg| width=200)
+<img src="https://i.imgur.com/kV0ZkUc.jpg" data-canonical-src="https://i.imgur.com/kV0ZkUc.jpg" width="200">
