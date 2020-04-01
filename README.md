@@ -19,4 +19,5 @@ optional arguments:
 ```
 
 Example output:
+
 <img src="https://i.imgur.com/kV0ZkUc.jpg" data-canonical-src="https://i.imgur.com/kV0ZkUc.jpg" width="200">
