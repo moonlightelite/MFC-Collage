@@ -2,8 +2,8 @@
 MFC collage for everyone
 
 Need
-  -https://github.com/adrienverge/PhotoCollage
-  -https://pypi.org/project/Pillow/
+- https://github.com/adrienverge/PhotoCollage
+- https://pypi.org/project/Pillow/
 
 Usage:
 ```
