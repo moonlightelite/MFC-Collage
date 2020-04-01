@@ -17,3 +17,6 @@ optional arguments:
   -u USER, --user USER  MFC user name
   -o OUTPUT, --output OUTPUT Output file
 ```
+
+Example output:
+![Not mine](https://i.imgur.com/kV0ZkUc.jpg)
