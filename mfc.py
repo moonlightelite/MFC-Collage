@@ -23,6 +23,7 @@ import math
 from PIL import Image
 from photocollage.collage import Page, Photo
 from photocollage.render import RenderingTask, build_photolist, QUALITY_BEST
+from collage_maker import make_collage
 
 owned_url = "https://myfigurecollection.net/users.v4.php?mode=view&username={0}&tab=collection&page=1&status=2&output=2&current=keywords&rootId=0&categoryId=-1&sort=category&order=asc"
 ordered_url = "https://myfigurecollection.net/users.v4.php?mode=view&username={0}&tab=collection&rootId=0&status=1"
@@ -46,11 +47,12 @@ def run(args):
       q = requests.get(u).content
       print("Downloading " + u)
       if not q or len(q) < 300:
-        print("Retrying " + u)
         u = img_url_big.format(i)
+        print("Retrying " + u)
         q = requests.get(u).content
       fp = tempfile.NamedTemporaryFile()
       fp.write(q)
+      fp.flush()
       with open("/tmp/{0}".format(i), "wb") as fd:
         fd.write(q)
       tmp_file.append(fp)
@@ -70,14 +72,18 @@ def run(args):
   harmonic_mean = len(tmp_file) / harmonic_mean_sum
   print(harmonic_mean)
 
-  tmp_file_photo = build_photolist(tmp_file)
-  pa = Page(min(4800, total_y / 2), harmonic_mean * 3, int(math.sqrt(len(tmp_file))))
-  for t in tmp_file_photo:
-    pa.add_cell(t)
-
-  pa.adjust()
-  t = RenderingTask(pa, output_file=args.output, quality=QUALITY_BEST)
-  t.start()
+  if not args.collage or args.collage == "1":
+    tmp_file_names = map(lambda x: x.name, tmp_file)
+    res = make_collage(tmp_file_names, args.output, int(300 * math.sqrt(len(tmp_file))), \
+                       harmonic_mean * 300, enlarge=False)
+  elif args.collage == "2":
+    tmp_file_photo = build_photolist(tmp_file)
+    pa = Page(min(4800, total_y / 2), harmonic_mean * 3, int(math.sqrt(len(tmp_file)) * 2))
+    for t in tmp_file_photo:
+      pa.add_cell(t)
+    pa.adjust()
+    t = RenderingTask(pa, output_file=args.output, quality=QUALITY_BEST)
+    t.start()
   print("Done")
 
 if __name__ == "__main__":
@@ -86,6 +92,7 @@ if __name__ == "__main__":
   parser.add_argument('-m', '--mode', help='"owned" or "ordered"')
   parser.add_argument('-o', '--output', help='Output file')
   parser.add_argument('-i', '--input', help='Input Folder')
+  parser.add_argument('-c', '--collage', help='Which photo collage to use "1" or "2"')
   args = parser.parse_args()
 
   run(args)
