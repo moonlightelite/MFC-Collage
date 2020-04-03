@@ -9,14 +9,18 @@ Need
 Usage:
 ```
 $ ./mfc.py -h
-usage: mfc.py [-h] [-u USER] [-o OUTPUT]
+usage: mfc.py [-h] [-u USER] [-m MODE] [-o OUTPUT] [-i INPUT]
 
 Generate collage.
 
 optional arguments:
   -h, --help            show this help message and exit
   -u USER, --user USER  MFC user name
-  -o OUTPUT, --output OUTPUT Output file
+  -m MODE, --mode MODE  "owned" or "ordered"
+  -o OUTPUT, --output OUTPUT
+                        Output file
+  -i INPUT, --input INPUT
+                        Input Folder
 ```
 
 Q: Photos are clipped!
