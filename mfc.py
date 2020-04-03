@@ -54,8 +54,6 @@ def run(args):
       fp = tempfile.NamedTemporaryFile()
       fp.write(q)
       fp.flush()
-      with open("/tmp/{0}".format(i), "wb") as fd:
-        fd.write(q)
       tmp_file.append(fp)
   elif args.input:
     for r, d, f in os.walk(args.input):
