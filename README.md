@@ -3,6 +3,7 @@ MFC collage for everyone
 
 Need
 - https://github.com/adrienverge/PhotoCollage
+- https://github.com/delimitry/collage_maker
 - https://pypi.org/project/Pillow/
 - Python 2 (3 should work but not tested)
 
@@ -37,4 +38,4 @@ A: Try using Pillow instead of PIL
 
 Example output:
 
-<img src="https://i.imgur.com/wuht1oM.jpg" data-canonical-src="https://i.imgur.com/wuht1oM.jpg" width="200">
+<img src="https://i.imgur.com/XLJnbVf.jpg" data-canonical-src="https://i.imgur.com/XLJnbVf.jpg" width="200">
