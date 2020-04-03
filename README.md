@@ -3,9 +3,11 @@ MFC collage for everyone
 
 Need
 - https://github.com/adrienverge/PhotoCollage
-- https://github.com/delimitry/collage_maker
 - https://pypi.org/project/Pillow/
 - Python 2 (3 should work but not tested)
+
+Included
+- https://github.com/delimitry/collage_maker
 
 Usage:
 ```
