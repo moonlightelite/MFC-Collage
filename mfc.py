@@ -25,8 +25,8 @@ from photocollage.collage import Page, Photo
 from photocollage.render import RenderingTask, build_photolist, QUALITY_BEST
 from collage_maker import make_collage
 
-owned_url = "https://myfigurecollection.net/users.v4.php?mode=view&username={0}&tab=collection&page=1&status=2&output=2&current=keywords&rootId=0&categoryId=-1&sort=category&order=asc"
-ordered_url = "https://myfigurecollection.net/users.v4.php?mode=view&username={0}&tab=collection&rootId=0&status=1"
+owned_url = "https://myfigurecollection.net/users.v4.php?mode=view&username={0}&tab=collection&page=1&status=2&output=2&current=keywords&rootId=-1&categoryId=-1&sort=category&order=asc"
+ordered_url = "https://myfigurecollection.net/users.v4.php?mode=view&username=eromaster&tab=collection&page=1&status=1&output=2&current=keywords&rootId=-1&categoryId=-1&sort=category&order=asc"
 img_url = "https://static.myfigurecollection.net/pics/figure/large/{0}.jpg"
 img_url_big = "https://static.myfigurecollection.net/pics/figure/big/{0}.jpg"
 
