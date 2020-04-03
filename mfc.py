@@ -20,6 +20,7 @@ import tempfile
 import requests
 import argparse
 import math
+import random
 from PIL import Image
 from photocollage.collage import Page, Photo
 from photocollage.render import RenderingTask, build_photolist, QUALITY_BEST
@@ -61,6 +62,9 @@ def run(args):
       for file in f:
         tmp_file.append(open(os.path.join(r, file), 'rb'))
 
+  if args.randomize:
+    random.shuffle(tmp_file)
+
   total_x = total_y = 0
   harmonic_mean_sum = 0
   for i in tmp_file:
@@ -72,11 +76,11 @@ def run(args):
   harmonic_mean = len(tmp_file) / harmonic_mean_sum
   print(harmonic_mean)
 
-  if not args.collage or args.collage == "1":
+  if not args.collage or args.collage == 1:
     tmp_file_names = map(lambda x: x.name, tmp_file)
     res = make_collage(tmp_file_names, args.output, int(300 * math.sqrt(len(tmp_file))), \
                        harmonic_mean * 300, enlarge=False)
-  elif args.collage == "2":
+  elif args.collage == 2:
     tmp_file_photo = build_photolist(tmp_file)
     pa = Page(min(4800, total_y / 2), harmonic_mean * 3, int(math.sqrt(len(tmp_file)) * 2))
     for t in tmp_file_photo:
@@ -89,10 +93,11 @@ def run(args):
 if __name__ == "__main__":
   parser = argparse.ArgumentParser(description='Generate collage.')
   parser.add_argument('-u', '--user', help='MFC user name')
-  parser.add_argument('-m', '--mode', help='"owned" or "ordered"')
-  parser.add_argument('-o', '--output', help='Output file')
+  parser.add_argument('-m', '--mode', help='"owned" or "ordered"', default="owned")
+  parser.add_argument('-o', '--output', help='Output file', required=True)
   parser.add_argument('-i', '--input', help='Input Folder')
-  parser.add_argument('-c', '--collage', help='Which photo collage to use "1" or "2"')
+  parser.add_argument('-r', '--randomize', help='Randomize layout', default=True, action='store_true')
+  parser.add_argument('-c', '--collage', help='Which photo collage to use "1" or "2"', default=1, type=int)
   args = parser.parse_args()
 
   run(args)
