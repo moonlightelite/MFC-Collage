@@ -37,4 +37,4 @@ A: Try using Pillow instead of PIL
 
 Example output:
 
-<img src="https://i.imgur.com/kV0ZkUc.jpg" data-canonical-src="https://i.imgur.com/kV0ZkUc.jpg" width="200">
+<img src="https://i.imgur.com/wuht1oM.jpg" data-canonical-src="https://i.imgur.com/wuht1oM.jpg" width="200">
